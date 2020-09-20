@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  margin: 10px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+.board {
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: white;
+  width: 250px;
+  height: 300px;
+  border: 20px solid rgb(221, 221, 221);
+  box-shadow: 5px 10px 8px #252525;
+  border-radius: 30px;
+  margin: 15px;
+}
+
+.icon {
+  width: 150px;
+  padding: 30px 10px;
+}
