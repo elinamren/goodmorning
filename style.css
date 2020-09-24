@@ -12,15 +12,31 @@ body {
 
 h1 {
   font-size: 3rem;
+  padding: 5px;
+  display: inline;
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+}
+
+a {
+  border: 2px solid rgb(221, 221, 221);
+  border-radius: 15px;
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  font-size: 1.8rem;
+  margin: 0px 20px;
+}
+
+.today {
+  display: inline;
+  font-size: 1.8rem;
 }
 
 .board {
-  padding: 20px;
-  margin: 10px;
+  margin: 5px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -43,7 +59,7 @@ p {
   border: 20px solid rgb(221, 221, 221);
   border-radius: 30px;
   box-shadow: 5px 10px 8px #252525;
-  transition: transform s;
+  transition: transform 1.5s;
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -67,4 +83,26 @@ p {
 .icon {
   width: 150px;
   padding: 30px 10px;
+}
+
+.body-winner {
+  background-image: url("images/star-background.jpg");
+  padding: 100px;
+  text-align: center;
+}
+
+.winner {
+  color: yellow;
+  font-size: 10rem;
+  font-weight: 800px;
+  display: block;
+}
+
+.play-again {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 3rem;
+  padding: 10px;
 }
