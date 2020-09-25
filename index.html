@@ -13,7 +13,9 @@
         <span id="day"></span>
         <span id="hour"></span>:<span id="minute"></span>
       </p>
-      <!--<a href="#" class="top-list">Top List</a>-->
+      <!-- FOR LATER - TIME TOP-LIST
+        
+        <a href="#" class="top-list">Top List</a>-->
 
       <div class="board">
         <div class="card">
@@ -30,10 +32,12 @@
         </div>
 
         <div class="card">
-          <div class="card-inner">
-            <div class="card-front" id="stop">
+          <div class="card-inner" id="card-dress">
+            <div class="card-front">
               <img class="icon" src="images/clothes.svg" />
               <p>Get dressed</p>
+              <p class="time-display" id="dress-time">0:00</p>
+              <img src="images/clock.svg" alt="timer" class="time-icon" />
             </div>
             <div class="card-back">
               <img src="images/star.svg" alt="star" class="icon" />
@@ -60,14 +64,16 @@
         </div>
 
         <div class="card">
-          <div class="card-inner">
-            <div class="card-front" id="timer">
+          <div class="card-inner" id="card-brush">
+            <div class="card-front">
               <img
                 class="icon"
                 src="images/brush.svg"
                 alt="tooth brush and paste"
               />
               <p>Brush teeth</p>
+              <p class="time-display" id="brush-time">2:00</p>
+              <img src="images/clock.svg" alt="timer" class="time-icon" />
             </div>
             <div class="card-back">
               <img src="images/star.svg" alt="star" class="icon" />
@@ -101,6 +107,17 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="winner-page winner-page-hidden">
+        <h1 class="winner">Winner!</h1>
+        <br />
+        <img src="images/star.svg" alt="star" class="winner-icon" />
+        <img src="images/star.svg" alt="star" class="winner-icon" />
+        <img src="images/star.svg" alt="star" class="winner-icon" />
+        <img src="images/star.svg" alt="star" class="winner-icon" />
+        <img src="images/star.svg" alt="star" class="winner-icon" />
+        <img src="images/star.svg" alt="star" class="winner-icon" />
+        <a class="play-again" href="index.html">Play again</a>
       </div>
     </main>
     <script src="app.js"></script>

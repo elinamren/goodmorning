@@ -7,7 +7,8 @@
 body {
   font-family: "Courier New", Courier, monospace;
   text-align: center;
-  margin: 10px;
+  margin: 10px auto;
+  max-width: 1000px;
 }
 
 h1 {
@@ -82,9 +83,27 @@ a {
 
 .icon {
   width: 150px;
-  padding: 30px 10px;
+  padding: 25px 10px;
 }
 
+/*  TIMER  */
+.time-icon {
+  width: 40px;
+  position: relative;
+  bottom: 42px;
+  left: 75px;
+}
+
+.time-icon-hidden {
+  display: none;
+}
+
+.time-display {
+  font-size: 2.2rem;
+  padding-top: 5px;
+}
+
+/*  WINNER DIV  */
 .body-winner {
   background-image: url("images/star-background.jpg");
   padding: 100px;
@@ -92,10 +111,34 @@ a {
 }
 
 .winner {
-  color: yellow;
-  font-size: 10rem;
+  font-size: 7rem;
   font-weight: 800px;
-  display: block;
+}
+
+.winner-icon {
+  width: 120px;
+  padding: 10px;
+  margin-bottom: 80px;
+}
+
+.winner-page {
+  width: 90%;
+  height: 85%;
+  border: 20px solid rgb(221, 221, 221);
+  border-radius: 30px;
+  box-shadow: 5px 10px 8px #252525;
+  padding: 52px;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: white;
+}
+
+.winner-page-hidden {
+  pointer-events: none;
+  opacity: 0;
 }
 
 .play-again {
@@ -105,4 +148,5 @@ a {
   font-family: "Courier New", Courier, monospace;
   font-size: 3rem;
   padding: 10px;
+  margin: 20px;
 }
