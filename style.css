@@ -104,11 +104,6 @@ a {
 }
 
 /*  WINNER DIV  */
-.body-winner {
-  background-image: url("images/star-background.jpg");
-  padding: 100px;
-  text-align: center;
-}
 
 .winner {
   font-size: 7rem;
