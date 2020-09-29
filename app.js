@@ -34,29 +34,31 @@ function addZero(i) {
 function convertSeconds(s) {
   const min = Math.floor(s / 60);
   let sec = Math.floor(s % 60);
-  return min + ":" + addZero(sec);
+  return min + ":" + addZero(sec); //add the zero when 1-9
 }
 
 // Get day and time. update every second.
 function myTime() {
   setInterval(() => {
-    const date = new Date();
-    const weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    // update every second
+    const date = new Date(); // get date
+    const weekdays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ]; // Array with all the weekdays
 
-    const days = weekday[date.getDay()];
-    dayDisplay.innerHTML = days;
+    const day = weekdays[date.getDay()]; //get day and show at day display
+    dayDisplay.innerHTML = day;
 
-    const hour = addZero(date.getHours());
+    const hour = addZero(date.getHours()); //get hour and show at hour display
     hourDisplay.innerHTML = hour;
 
-    const minute = addZero(date.getMinutes());
+    const minute = addZero(date.getMinutes()); //get minutes and show at minutes display
     minuteDisplay.innerHTML = minute;
   }, 1000);
 }
