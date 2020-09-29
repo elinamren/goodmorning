@@ -131,12 +131,12 @@ a {
   background: white;
 }
 
-.winner-page-hidden {
+.hidden {
   pointer-events: none;
   opacity: 0;
 }
 
-.play-again {
+/*.play-again {
   background-color: white;
   border: 2px solid black;
   border-radius: 15px;
@@ -144,4 +144,28 @@ a {
   font-size: 3rem;
   padding: 10px;
   margin: 20px;
+}
+
+.play-again:hover {
+  background-color: black;
+  color: white;
+  transition: 1s;
+}*/
+
+@media only screen and (max-width: 600px) {
+  .winner-page {
+    padding: 50px 15px;
+    top: 100px;
+  }
+  .winner-icon {
+    width: 100px;
+    margin: 0px;
+    padding: 3px;
+  }
+
+  .winner {
+    font-size: 3.5rem;
+    display: block;
+    padding-bottom: 0px;
+  }
 }

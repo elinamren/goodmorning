@@ -55,7 +55,9 @@ const cardDress = document.querySelector("#card-dress");
 const cardBrush = document.querySelector("#card-brush");
 
 const winnerPage = document.querySelector(".winner-page");
-// const timeIcon = document.querySelector(".time-icon");
+const timeIconDress = document.querySelector("#time-icon-dress");
+const timeIconBrush = document.querySelector("#time-icon-brush");
+const playAgain = document.querySelector(".play-again");
 
 // Click function and check if cards are flipped.
 function clickHandler() {
@@ -80,9 +82,11 @@ function clickHandler() {
       timeDisplay.innerHTML = convertSeconds(time);
       setTimeout(() => {
         cardDress.classList.add("flipped");
-        //timeIcon.classList.add("time-icon-hidden");
         audio.play();
         cardArray.push(1);
+        setTimeout(() => {
+          timeIconDress.classList.add("time-icon-hidden");
+        }, 485);
       }, 1500);
     }
 
@@ -103,9 +107,11 @@ function clickHandler() {
           clearInterval(interval);
           setTimeout(() => {
             cardBrush.classList.add("flipped");
-            //timeIcon.classList.add("time-icon-hidden");
             audio.play();
             cardArray.push(1);
+            setTimeout(() => {
+              timeIconBrush.classList.add("time-icon-hidden");
+            }, 480);
           }, 1000);
         }
       }
@@ -120,13 +126,15 @@ function clickHandler() {
   // IF ALL CARDES ARE FLIPPED
   if (cardArray.length == 6) {
     setTimeout(() => {
-      winnerPage.classList.remove("winner-page-hidden");
+      winnerPage.classList.remove("hidden");
       winnerAudio.play();
     }, 2000); //delay 2 sec
   }
   this.removeEventListener("click", clickHandler); //remove the eventlistener so cant click again
 }
 
-cards.forEach((card) => card.addEventListener("click", clickHandler));
+//playAgain.addEventListener("click", function () {
+//winnerPage.classList.add("hidden");
+//});
 
-// LÄGG TILL PLAY AGAIN ADD WINNER PAGE HIDDEN
+cards.forEach((card) => card.addEventListener("click", clickHandler));
