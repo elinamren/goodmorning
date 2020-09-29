@@ -9,6 +9,8 @@ body {
   text-align: center;
   margin: 10px auto;
   max-width: 1000px;
+  background-image: url("images/bg.png");
+  background-size: 100%;
 }
 
 h1 {
@@ -59,7 +61,7 @@ a {
   height: 100%;
   border: 20px solid rgb(221, 221, 221);
   border-radius: 30px;
-  box-shadow: 5px 10px 8px #252525;
+  box-shadow: 5px 8px 8px #313131c2;
   transition: transform 1.5s;
   transform-style: preserve-3d;
   cursor: pointer;
@@ -68,9 +70,11 @@ a {
 .card-front,
 .card-back {
   position: absolute;
+  background-color: white;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  border-radius: 10px;
 }
 
 .card-back {
@@ -113,22 +117,23 @@ a {
 .winner-icon {
   width: 120px;
   padding: 10px;
-  margin-bottom: 80px;
+  padding-bottom: 50px;
 }
 
 .winner-page {
-  width: 90%;
+  width: 80%;
   height: 85%;
   border: 20px solid rgb(221, 221, 221);
   border-radius: 30px;
-  box-shadow: 5px 10px 8px #252525;
-  padding: 52px;
+  box-shadow: 5px 8px 8px #313131c2;
+  padding: 100px 50px;
   position: absolute;
   top: 80px;
   left: 0;
   right: 0;
   margin: auto;
   background: white;
+  transition: 0.5s;
 }
 
 .hidden {

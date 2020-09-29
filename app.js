@@ -1,4 +1,28 @@
-//Add zero if under 10
+// --- DAY & TIME ---
+const dayDisplay = document.querySelector("#day");
+const hourDisplay = document.querySelector("#hour");
+const minuteDisplay = document.querySelector("#minute");
+const secondDisplay = document.querySelector("#second");
+
+// --- CARDS ---
+const cards = Array.from(document.querySelectorAll(".card-inner")); //Select all cards and make an array
+const cardDress = document.querySelector("#card-dress");
+const cardBrush = document.querySelector("#card-brush");
+const cardArray = []; // --- ARRAY FOR CARDS, checking if all are flipped
+
+// --- TIME ICONS ---
+const timeIconDress = document.querySelector("#time-icon-dress");
+const timeIconBrush = document.querySelector("#time-icon-brush");
+
+// --- AUDIO ---
+const winnerAudio = new Audio("images/fanfare.wav");
+const audio = new Audio("images/star.ogg");
+
+// --- WINNER DIV ---
+const winnerPage = document.querySelector(".winner-page");
+//const playAgain = document.querySelector(".play-again");
+
+//Add zero if under 10 (for clock and timers)
 function addZero(i) {
   if (i < 10) {
     i = "0" + i;
@@ -6,135 +30,126 @@ function addZero(i) {
   return i;
 }
 
-//Convert seconds
+//Convert seconds (for timers)
 function convertSeconds(s) {
   const min = Math.floor(s / 60);
   let sec = Math.floor(s % 60);
   return min + ":" + addZero(sec);
 }
 
-// Get the day and the time and update every second.
-window.onload = function () {
-  let start = setInterval(day);
-};
+// Get day and time. update every second.
+function myTime() {
+  setInterval(() => {
+    const date = new Date();
+    const weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
 
-function day() {
-  const d = new Date();
-  const weekday = new Array(7);
-  weekday[0] = "Sunday";
-  weekday[1] = "Monday";
-  weekday[2] = "Tuesday";
-  weekday[3] = "Wednesday";
-  weekday[4] = "Thursday";
-  weekday[5] = "Friday";
-  weekday[6] = "Saturday";
+    const days = weekday[date.getDay()];
+    dayDisplay.innerHTML = days;
 
-  const n = weekday[d.getDay()];
-  (document.getElementById("day").innerHTML = n), 100;
+    const hour = addZero(date.getHours());
+    hourDisplay.innerHTML = hour;
 
-  const h = addZero(d.getHours());
-  (document.getElementById("hour").innerHTML = h), 1000;
-
-  const m = addZero(d.getMinutes());
-  (document.getElementById("minute").innerHTML = m), 1000;
+    const minute = addZero(date.getMinutes());
+    minuteDisplay.innerHTML = minute;
+  }, 1000);
 }
 
-day();
+myTime();
 
-//Click function
-
-//flip cards and play sound when click
-
-const winnerAudio = new Audio("images/fanfare.wav");
-const audio = new Audio("images/star.ogg");
-const cards = Array.from(document.querySelectorAll(".card-inner")); //Select all cards and make an array
-
-const cardArray = [];
-
-const cardDress = document.querySelector("#card-dress");
-const cardBrush = document.querySelector("#card-brush");
-
-const winnerPage = document.querySelector(".winner-page");
-const timeIconDress = document.querySelector("#time-icon-dress");
-const timeIconBrush = document.querySelector("#time-icon-brush");
-const playAgain = document.querySelector(".play-again");
-
-// Click function and check if cards are flipped.
+// --- CLICK CARDS
 function clickHandler() {
-  // IF DRESS CARD IS CLICKED
+  // IF DRESS CARD CLICKED - stopwatch
   if (this == cardDress) {
-    const timeDisplay = document.querySelector("#dress-time");
-    let time = 0;
-    let interval;
+    //if this that is clicked is the dress card
+    const timeDisplay = document.querySelector("#dress-time"); //dress time display.
+    let time = 0; //start at 0
+    let interval; //the interval. to be abale to clear later
 
     function dressTimer() {
-      interval = setInterval(startTimer, 1000);
+      interval = setInterval(startTimer, 1000); // update every second
       function startTimer() {
         time++;
-        timeDisplay.innerHTML = convertSeconds(time);
+        timeDisplay.innerHTML = convertSeconds(time); // add 1 every second and show in time display. convert if it gets over 60 and add 1 minute.
       }
-      cardDress.removeEventListener("click", dressTimer);
+      cardDress.removeEventListener("click", dressTimer); // remove and add new event listener get to stop the watch on click
       cardDress.addEventListener("click", pauseTimer);
     }
 
     function pauseTimer() {
-      clearInterval(interval);
-      timeDisplay.innerHTML = convertSeconds(time);
+      clearInterval(interval); // clear interval to make the timer stop
+      timeDisplay.innerHTML = convertSeconds(time); //show the stoped time on time display
       setTimeout(() => {
-        cardDress.classList.add("flipped");
-        audio.play();
-        cardArray.push(1);
+        // add a delay to flip card when time is cleard
+        cardDress.classList.add("flipped"); // add class flipped to make the card turn 180deg
+        audio.play(); //play audio
+        cardArray.push("hey dress card is flipped"); // add to the array. to know when all cards are flipped.
         setTimeout(() => {
-          timeIconDress.classList.add("time-icon-hidden");
+          // add delay to hide time icon
+          timeIconDress.classList.add("time-icon-hidden"); //hide the time icon after 0.485s
         }, 485);
-      }, 1500);
+      }, 1500); // flip card after 1.5s
     }
 
     dressTimer();
   }
 
-  //IF BRUSH CARD IS CLICKED
+  //IF BRUSH CARD CLICKED - timer
   else if (this == cardBrush) {
-    const timeDisplay = document.querySelector("#brush-time");
-    let timeLeft = 5;
+    // if this that is clicked is the card brush
+    const timeDisplay = document.querySelector("#brush-time"); // time display
+    let timeLeft = 5; //start count down from
 
     function brushTimer() {
-      const interval = setInterval(startTimer, 1000);
+      const interval = setInterval(startTimer, 1000); // interval to be able to clear later. set interval - update every second.
       function startTimer() {
-        timeLeft--;
-        timeDisplay.innerHTML = convertSeconds(timeLeft);
+        timeLeft--; // minus 1 every second.
+        timeDisplay.innerHTML = convertSeconds(timeLeft); //show time at the brush time display
         if (timeLeft === 0) {
+          //when the time have been counting down to 0 - stop- clear interval.
           clearInterval(interval);
           setTimeout(() => {
-            cardBrush.classList.add("flipped");
-            audio.play();
-            cardArray.push(1);
+            // add delay for the card to flip
+            cardBrush.classList.add("flipped"); // add class flipped to make card turn 180deg.
+            audio.play(); //play audio
+            cardArray.push("brush card is now flipped"); //add to array
             setTimeout(() => {
-              timeIconBrush.classList.add("time-icon-hidden");
+              //add delay for time icon to hide
+              timeIconBrush.classList.add("time-icon-hidden"); //hide time icon with display none class after 0.48d.
             }, 480);
-          }, 1000);
+          }, 1000); //card flippes after 1s
         }
       }
     }
     brushTimer();
   } else {
-    this.classList.add("flipped");
-    audio.play();
-    cardArray.push(1);
+    this.classList.add("flipped"); //flip the other cards if clicked
+    audio.play(); //play audio
+    cardArray.push("Hey, this card is flipped"); //add to array
   }
 
   // IF ALL CARDES ARE FLIPPED
   if (cardArray.length == 6) {
+    // if 6 cards ar added to the array
     setTimeout(() => {
-      winnerPage.classList.remove("hidden");
-      winnerAudio.play();
-    }, 2000); //delay 2 sec
+      //add delay to see the winner div
+      winnerPage.classList.remove("hidden"); //remove opacy 0 class on winner div to make it show
+      winnerAudio.play(); //play winner audio
+    }, 2000); //delay with 2 sec
   }
-  this.removeEventListener("click", clickHandler); //remove the eventlistener so cant click again
+  this.removeEventListener("click", clickHandler); //remove the eventlistener so you can't click again
 }
+
+console.log(cardArray);
+
+cards.forEach((card) => card.addEventListener("click", clickHandler)); //add event listener for all the cards in array made off all card.
 
 //playAgain.addEventListener("click", function () {
 //winnerPage.classList.add("hidden");
 //});
-
-cards.forEach((card) => card.addEventListener("click", clickHandler));
