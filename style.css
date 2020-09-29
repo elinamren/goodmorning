@@ -63,6 +63,8 @@ a {
   border-radius: 30px;
   box-shadow: 5px 8px 8px #313131c2;
   transition: transform 1.5s;
+  -webkit-transition: transform 1.5s;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -73,15 +75,18 @@ a {
   background-color: white;
   width: 100%;
   height: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 10px;
 }
 
 .card-back {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
 .flipped {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
