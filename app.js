@@ -106,7 +106,7 @@ function clickHandler() {
   else if (this == cardBrush) {
     // if this that is clicked is the card brush
     const timeDisplay = document.querySelector("#brush-time"); // time display
-    let timeLeft = 5; //start count down from
+    let timeLeft = 120; //start count down from
 
     function brushTimer() {
       const interval = setInterval(startTimer, 1000); // interval to be able to clear later. set interval - update every second.
@@ -147,8 +147,6 @@ function clickHandler() {
   }
   this.removeEventListener("click", clickHandler); //remove the eventlistener so you can't click again
 }
-
-console.log(cardArray);
 
 cards.forEach((card) => card.addEventListener("click", clickHandler)); //add event listener for all the cards in array made off all card.
 
